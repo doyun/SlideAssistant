@@ -1,0 +1,4 @@
+SlideAssistant
+==============
+
+For "IT-Эврика"
