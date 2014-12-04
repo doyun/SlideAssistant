@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Net.Sockets;
+using System.IO;
+using System.Web.Helpers;
+using SlideAssistantDesktop.Entities;
+using Newtonsoft.Json;
+
+namespace SlideAssistantDesktop.BL
+{
+    class ChatHandler
+    {
+
+        private TcpClient clientSocket;
+
+        public ChatHandler() 
+        {
+            clientSocket = new TcpClient();
+            clientSocket.Connect("127.0.0.1", 50000);
+            //ThreadStart threadDelegate = new ThreadStart(listen);
+            //Thread newThread = new Thread(threadDelegate);
+            //newThread.Start();   
+        }
+
+        public void listen()
+        {
+            while (clientSocket.Connected)
+            {
+                try
+                {
+                    NetworkStream netStream = clientSocket.GetStream();
+                    byte[] inStream = new byte[10000];
+                    netStream.Read(inStream, 0, (int)clientSocket.ReceiveBufferSize);
+                    string returndata = System.Text.Encoding.UTF8.GetString(inStream);
+
+                }
+                catch (SocketException ex)
+                {
+                    clientSocket.Close();
+                }
+            }
+        }
+
+        public void write(string name, string slideNumber) 
+        {
+            NetworkStream netStream = clientSocket.GetStream();
+            StreamWriter sw = new StreamWriter(netStream);
+            Package package = new Package();
+            package.type = "desktop";
+            package.name = name;
+            package.slideNumber = slideNumber;
+            sw.WriteLine(JsonConvert.SerializeObject(package));
+            sw.Flush();
+        }
+
+        public void disconnect() 
+        {
+            clientSocket.Close();
+        }
+    }
+}

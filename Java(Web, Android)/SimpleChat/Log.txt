@@ -1,0 +1,6 @@
+Server started
+
+Connection 1 opened
+New Message: {"type":"desktop","name":"04_Generics","slideNumber":"1","connectionsNumber":null,"clear":null,"question":null}
+New Message: {"type":"desktop","name":"04_Generics","slideNumber":"2","connectionsNumber":null,"clear":null,"question":null}
+New Message: {"type":"desktop","name":"04_Generics","slideNumber":"3","connectionsNumber":null,"clear":null,"question":null}
