@@ -12,7 +12,7 @@ namespace SlideAssistantDesktop.BL
 {
     class PresentationHandler
     {
-        delegate void SetTextCallback(string text);
+        
         private IConnectionPoint connectionPoint;
         private int cookie;
         private ApplicationClass pp;

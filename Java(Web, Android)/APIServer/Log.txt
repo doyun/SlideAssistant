@@ -1,0 +1,30 @@
+Server started
+
+Connection 1 opened
+New Message: {"id":"","type":"desktop","name":"Presentation","slideNumber":"1","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"1","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+Connection 2 opened
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"2","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"2","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","clear":"0","slideNumber":"2","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"android"}
+Send: {"clear":"0","id":"5","slideNumber":"2","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"android"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"3","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"3","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","clear":"0","slideNumber":"3","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"android"}
+Send: {"clear":"0","id":"5","slideNumber":"3","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"android"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"2","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"2","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"3","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"3","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"4","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"4","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"5","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"5","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"4","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"4","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"3","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"3","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"2","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"2","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}
+New Message: {"id":"5","type":"desktop","name":"Presentation","slideNumber":"1","connectionsNumber":null,"isClear":"0","clear":"0","question":null}
+Send: {"clear":"0","id":"5","slideNumber":"1","isClear":"0","name":"Presentation","connectionsNumber":null,"question":null,"type":"desktop"}

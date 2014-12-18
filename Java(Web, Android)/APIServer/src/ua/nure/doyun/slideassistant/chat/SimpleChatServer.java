@@ -12,6 +12,7 @@ import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import ua.nure.doyun.slideassistant.dao.DAManager;
 import ua.nure.doyun.slideassistant.entities.SlidePackage;
 
 public class SimpleChatServer {
@@ -47,10 +48,16 @@ public class SimpleChatServer {
 			String message;
 			try {
 				while ((message = reader.readLine()) != null) {
-					fw.write("New Message: " + message + "\r\n");
+					fw.write("New Message: " + message + System.lineSeparator());
 					fw.flush();
 					System.out.println(message);
 					SlidePackage pack = new SlidePackage(message);
+					if (pack.getType().equals("desktop")
+							&& pack.getId().equals("")) {
+						DAManager.newInstance().createPresentation(pack);
+					}
+					fw.write("Send: " + pack.toString() + System.lineSeparator());
+					fw.flush();
 					sendEveryone(pack.toString());
 					System.out.println(pack.toString());
 				}
@@ -133,8 +140,9 @@ public class SimpleChatServer {
 				Thread t = new Thread(new SimpleChatServer().new ServerHandler(
 						params[1]));
 				t.start();
-			} else
+			} else {
 				System.out.println(s);
+			}
 		}
 
 	}

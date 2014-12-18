@@ -3,6 +3,13 @@
 
     <string name="app_name">SlideAssistant</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Settings</string>    
+    <string name="name">Name: </string>
+    <string name="slideNumber">Slide number: </string>
+    <string name="connectionsNumber">All connections number: </string>
+    <string name="clear">Slide is clear for: </string>
+    <string name="clearButton">Clear</string>
+    
+    
 
 </resources>
