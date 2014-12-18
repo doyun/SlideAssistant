@@ -23,6 +23,7 @@ public class SlidePackage {
 	public SlidePackage(String json){
 		try {
 			slidePackage = new JSONObject(json);
+			System.out.println("SlidePackage" + slidePackage.toString());
 			id = slidePackage.getString("id");
 			type = slidePackage.getString("type");
 			name = slidePackage.getString("name");
@@ -32,7 +33,9 @@ public class SlidePackage {
 			clear = slidePackage.getString("clear");
 			question = slidePackage.getString("question");
 			wasSetClear = slidePackage.getString("wasSetClear");
+			System.out.println("SlidePackage " + isClear + " " + wasSetClear);
 		} catch (JSONException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -73,6 +76,15 @@ public class SlidePackage {
 		return clear;
 	}
 
+	public void setClear(String clear) {
+		try {
+			slidePackage.put("clear", clear);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		this.clear = clear;
+	}
+	
 	public String getQuestion() {
 		return question;
 	}

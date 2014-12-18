@@ -37,5 +37,38 @@ public class DAManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public void createSlide(SlidePackage pack){
+		JSONParser jsonParser = new JSONParser();
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id", pack.getId()));
+		params.add(new BasicNameValuePair("slideNumber", pack.getSlideNumber()));
+		JSONObject json = jsonParser
+				.makeHttpRequest(
+						"http://localhost:8080/DAServer/createslide",
+						"POST", params);
+		try {
+			pack.setClear(json.getString("clear"));
+			System.out.println("createSlide json " + pack.getClear());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 
+	public void updateSlide(SlidePackage pack){
+		JSONParser jsonParser = new JSONParser();
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id", pack.getId()));
+		params.add(new BasicNameValuePair("slideNumber", pack.getSlideNumber()));
+		JSONObject json = jsonParser
+				.makeHttpRequest(
+						"http://localhost:8080/DAServer/updateslide",
+						"POST", params);
+		try {
+			pack.setClear(json.getString("clear"));
+			System.out.println("updateSlide json " + pack.getClear());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 }

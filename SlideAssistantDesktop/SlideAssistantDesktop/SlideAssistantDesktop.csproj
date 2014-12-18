@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="BL\ChatHandler.cs" />
     <Compile Include="BL\PresentationHandler.cs" />
-    <Compile Include="Entities\Package.cs" />
+    <Compile Include="Entities\SlidePackage.cs" />
     <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

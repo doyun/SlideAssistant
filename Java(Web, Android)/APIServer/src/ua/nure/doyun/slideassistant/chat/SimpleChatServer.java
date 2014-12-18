@@ -29,6 +29,8 @@ public class SimpleChatServer {
 		Socket socket;
 
 		BufferedReader reader;
+		
+		SlidePackage pack;
 
 		public ClientHandler(Socket clientSocket, int number) {
 			this.number = number;
@@ -51,12 +53,23 @@ public class SimpleChatServer {
 					fw.write("New Message: " + message + System.lineSeparator());
 					fw.flush();
 					System.out.println(message);
-					SlidePackage pack = new SlidePackage(message);
-					if (pack.getType().equals("desktop")
-							&& pack.getId().equals("")) {
-						DAManager.newInstance().createPresentation(pack);
+					pack = new SlidePackage(message);
+					if (pack.getType().equals("desktop")) {
+						if (pack.getId().equals("")) {
+							DAManager.newInstance().createPresentation(pack);
+						}
+						else {
+							DAManager.newInstance().createSlide(pack);
+						}
 					}
-					fw.write("Send: " + pack.toString() + System.lineSeparator());
+					else if(pack.getType().equals("android")){
+						System.out.println("update " + pack.getIsClear() + " " + pack.getWasSetClear());
+						if("1".equals(pack.getIsClear()) && "0".equals(pack.getWasSetClear())){
+							DAManager.newInstance().updateSlide(pack);
+						}
+					}
+					fw.write("Send: " + pack.toString()
+							+ System.lineSeparator());
 					fw.flush();
 					sendEveryone(pack.toString());
 					System.out.println(pack.toString());
@@ -70,7 +83,6 @@ public class SimpleChatServer {
 			}
 
 		}
-
 	}
 
 	private class ServerHandler implements Runnable {

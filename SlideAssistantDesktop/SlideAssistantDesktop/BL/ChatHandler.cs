@@ -26,6 +26,9 @@ namespace SlideAssistantDesktop.BL
             package.type = "desktop";
             package.isClear = "0";
             package.clear = "0";
+            package.connectionsNumber = "";
+            package.question = "";
+            package.wasSetClear = "";
             clientSocket = new TcpClient();
             clientSocket.Connect("127.0.0.1", 50000);
             ThreadStart threadDelegate = new ThreadStart(listen);
@@ -54,6 +57,8 @@ namespace SlideAssistantDesktop.BL
                 catch (SocketException ex)
                 {
                     clientSocket.Close();
+                }
+                catch (IOException ex) {
                 }
             }
         }

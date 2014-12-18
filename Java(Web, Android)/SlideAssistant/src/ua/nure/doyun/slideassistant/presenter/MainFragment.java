@@ -49,8 +49,14 @@ public class MainFragment extends Fragment implements IUpdateChatListener {
 			public void onClick(View v) {
 				buttonClear.setEnabled(false);
 				isClear.set(current, true);
-				packages.get(current).setClear("1");
+				packages.get(current).setIsClear("1");
+				packages.get(current).setWasSetClear("0");
 				activity.controller.sendMessage(packages.get(current));
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				packages.get(current).setWasSetClear("1");
 			}
 		});

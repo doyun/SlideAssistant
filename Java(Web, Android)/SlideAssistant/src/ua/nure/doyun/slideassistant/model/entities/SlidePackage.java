@@ -19,6 +19,8 @@ public class SlidePackage {
 	JSONObject slidePackage;
 	
 
+
+
 	public SlidePackage(String json){
 		try {
 			slidePackage = new JSONObject(json);
@@ -91,6 +93,15 @@ public class SlidePackage {
 
 	public String getIsClear() {
 		return isClear;
+	}
+
+	public void setIsClear(String isClear) {
+		try {
+			slidePackage.put("isClear", isClear);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		this.isClear = isClear;
 	}
 
 	public String getClear() {
