@@ -3,8 +3,6 @@ package ua.nure.doyun.slideassistant.entities;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-
 public class SlidePackage {
 
 	private String id;
@@ -16,11 +14,10 @@ public class SlidePackage {
 	private String clear;
 	private String question;
 	private String wasSetClear;
-	
+
 	JSONObject slidePackage;
 
-
-	public SlidePackage(String json){
+	public SlidePackage(String json) {
 		try {
 			slidePackage = new JSONObject(json);
 			System.out.println("SlidePackage" + slidePackage.toString());
@@ -38,7 +35,7 @@ public class SlidePackage {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void setId(String id) {
 		try {
 			slidePackage.put("id", id);
@@ -51,7 +48,7 @@ public class SlidePackage {
 	public String getId() {
 		return id;
 	}
-	
+
 	public String getType() {
 		return type;
 	}
@@ -66,6 +63,15 @@ public class SlidePackage {
 
 	public String getConnectionsNumber() {
 		return connectionsNumber;
+	}
+
+	public void setConnectionsNumber(String connectionsNumber) {
+		try {
+			slidePackage.put("connectionsNumber", connectionsNumber);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		this.connectionsNumber = connectionsNumber;
 	}
 
 	public String getIsClear() {
@@ -84,16 +90,16 @@ public class SlidePackage {
 		}
 		this.clear = clear;
 	}
-	
+
 	public String getQuestion() {
 		return question;
 	}
-	
+
 	public String getWasSetClear() {
 		return wasSetClear;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return slidePackage.toString();
 	}
 

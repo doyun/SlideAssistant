@@ -223,3 +223,4 @@ proguard/
 
 # Log Files
 *.log
+/Java(Web, Android)/APIServer/Log.txt

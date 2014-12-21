@@ -17,13 +17,13 @@ import android.widget.TextView;
 
 public class MainFragment extends Fragment implements IUpdateChatListener {
 
-	MainActivity activity;
-	TextView textViewName;
-	TextView textViewSlideNumber;
-	TextView textViewConnectionsNumber;
-	TextView textViewClear;
-	Button buttonClear;
-	
+	private MainActivity activity;
+	private TextView textViewName;
+	private TextView textViewSlideNumber;
+	private TextView textViewConnectionsNumber;
+	private TextView textViewClear;
+	private Button buttonClear;
+
 	private List<SlidePackage> packages = new ArrayList<SlidePackage>();
 	private List<Boolean> isClear = new ArrayList<Boolean>();
 	private int current = 0;
@@ -44,7 +44,7 @@ public class MainFragment extends Fragment implements IUpdateChatListener {
 				.findViewById(R.id.connectionsNumber);
 		textViewClear = (TextView) rootView.findViewById(R.id.clear);
 		buttonClear = (Button) rootView.findViewById(R.id.clearButton);
-		buttonClear.setOnClickListener(new View.OnClickListener() {			
+		buttonClear.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				buttonClear.setEnabled(false);
@@ -70,27 +70,30 @@ public class MainFragment extends Fragment implements IUpdateChatListener {
 			public void run() {
 				Log.d("MYTAG", pack.toString());
 				boolean isInList = false;
+				// ñheck if slide exist
 				for (int i = 0; i < packages.size(); i++) {
-					if(packages.get(i).getSlideNumber().equals(pack.getSlideNumber())){
+					if (packages.get(i).getSlideNumber()
+							.equals(pack.getSlideNumber())) {
 						isInList = true;
 						current = i;
 						break;
 					}
 				}
-				if(!isInList){
+				if (!isInList) {
 					packages.add(pack);
 					isClear.add(false);
-					current = packages.size()-1;
+					current = packages.size() - 1;
 					packages.get(current).setType("android");
-				}
-				else{
+				} else {
 					packages.get(current).setClear(pack.getClear());
-					packages.get(current).setConnectionsNumber(pack.getConnectionsNumber());
+					packages.get(current).setConnectionsNumber(
+							pack.getConnectionsNumber());
 				}
-				
+
 				buttonClear.setEnabled(!isClear.get(current));
-				
-				textViewName.setText(getString(R.string.name) + packages.get(current).getName());
+
+				textViewName.setText(getString(R.string.name)
+						+ packages.get(current).getName());
 				textViewSlideNumber.setText(getString(R.string.slideNumber)
 						+ packages.get(current).getSlideNumber());
 				textViewConnectionsNumber

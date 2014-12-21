@@ -22,13 +22,6 @@ namespace SlideAssistantDesktop.BL
         {
             lockOb = new Object();
             package = new SlidePackage();
-            package.id = "";
-            package.type = "desktop";
-            package.isClear = "0";
-            package.clear = "0";
-            package.connectionsNumber = "";
-            package.question = "";
-            package.wasSetClear = "";
             clientSocket = new TcpClient();
             clientSocket.Connect("127.0.0.1", 50000);
             ThreadStart threadDelegate = new ThreadStart(listen);

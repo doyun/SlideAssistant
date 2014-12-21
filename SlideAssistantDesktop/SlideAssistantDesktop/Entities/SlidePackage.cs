@@ -18,5 +18,16 @@ namespace SlideAssistantDesktop.Entities
         public string question { get; set; }
         public string wasSetClear {get; set;}
 
+        public SlidePackage() 
+        {
+            id = "";
+            type = "desktop";
+            isClear = "0";
+            clear = "0";
+            connectionsNumber = "";
+            question = "";
+            wasSetClear = "";
+        }
+
     }
 }

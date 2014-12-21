@@ -18,18 +18,13 @@ import ua.nure.doyun.slideassistant.entities.SlidePackage;
 public class SimpleChatServer {
 
 	static FileWriter fw;
-
 	ArrayList<PrintWriter> clientOutputStreams;
-
 	static boolean stop = false;
 
 	private class ClientHandler implements Runnable {
 		private int number;
-
 		Socket socket;
-
 		BufferedReader reader;
-		
 		SlidePackage pack;
 
 		public ClientHandler(Socket clientSocket, int number) {
@@ -42,7 +37,6 @@ public class SimpleChatServer {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		@Override
@@ -57,37 +51,38 @@ public class SimpleChatServer {
 					if (pack.getType().equals("desktop")) {
 						if (pack.getId().equals("")) {
 							DAManager.newInstance().createPresentation(pack);
-						}
-						else {
+						} else {
 							DAManager.newInstance().createSlide(pack);
 						}
-					}
-					else if(pack.getType().equals("android")){
-						System.out.println("update " + pack.getIsClear() + " " + pack.getWasSetClear());
-						if("1".equals(pack.getIsClear()) && "0".equals(pack.getWasSetClear())){
+					} else if (pack.getType().equals("android")) {
+						System.out.println("update " + pack.getIsClear() + " "
+								+ pack.getWasSetClear());
+						if ("1".equals(pack.getIsClear())
+								&& "0".equals(pack.getWasSetClear())) {
 							DAManager.newInstance().updateSlide(pack);
 						}
 					}
+					pack.setConnectionsNumber(String
+							.valueOf(clientOutputStreams.size() - 1));
 					fw.write("Send: " + pack.toString()
 							+ System.lineSeparator());
 					fw.flush();
 					sendEveryone(pack.toString());
 					System.out.println(pack.toString());
 				}
-				fw.write("Connection " + number + " closed\r\n\r\n");
+				fw.write("Connection " + number + " closed"
+						+ System.lineSeparator() + System.lineSeparator());
 				fw.flush();
 			} catch (SocketException e) {
-
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
 
 	private class ServerHandler implements Runnable {
 		private int count;
-		String port;
+		private String port;
 
 		public ServerHandler(String port) {
 			this.port = port;
@@ -118,18 +113,18 @@ public class SimpleChatServer {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
-
 	}
 
 	public static void main(String[] args) throws IOException {
 		fw = new FileWriter(new File("Log.txt"));
-		fw.write("Server started\r\n\r\n");
+		fw.write("Server started" + System.lineSeparator()
+				+ System.lineSeparator());
 		fw.flush();
 
 		String s = null;
 		String[] params = new String[10];
+		boolean started = false;
 
 		while (true) {
 			System.out.print("Enter command to execute: ");
@@ -144,19 +139,19 @@ public class SimpleChatServer {
 			}
 
 			if (params[0].equals("stop")) {
-				fw.write("Server stopped\r\n ~~~~~~~~ \r\n");
+				fw.write("Server stopped~~~~~~~~");
 				fw.flush();
 				fw.close();
 				System.exit(0);
-			} else if (params[0].equals("start")) {
+			} else if ("start".equals(params[0]) && !started) {
 				Thread t = new Thread(new SimpleChatServer().new ServerHandler(
 						params[1]));
 				t.start();
+				started = true;
 			} else {
 				System.out.println(s);
 			}
 		}
-
 	}
 
 	public void sendEveryone(String message) {
@@ -166,7 +161,5 @@ public class SimpleChatServer {
 			writer.println(message);
 			writer.flush();
 		}
-
 	}
-
 }
